@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Teacher Registration
+{% endblock %}
+
+{% block main %}
+    <form action="/register_teacher" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password"/>
+        <div class="form-group">
+            <input class="form-control" name="password_confirm" placeholder="Confirm Password" type="password"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+        <div class="form-group">
+</div>
+    </form>
+{% endblock %}
