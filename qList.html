@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- Apps CSS -->
+        <link href="static/styles.css" rel="stylesheet"/>
+
+        <title>Questions</title>
+    </head>
+    <body>
+        <h2>Questions</h2>
+
+    <table>
+        <thead>
+        <!--<tr>-->
+        <!--    <th>Question</th>-->
+        <!--    <th>Answered</th>-->
+        <!--</tr>-->
+        </thead>
+        <tbody>
+        {% for question in questions %}
+        <tr>
+            <td id="first"><a href="url">{{ question["Title"] }}</a></td>
+            <td id="second">{{ question["Answered"] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </body>
+</html>
