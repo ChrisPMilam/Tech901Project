@@ -56,18 +56,18 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = :username",
+        rows = db.execute("SELECT * FROM User WHERE username = :username",
                           username=request.form.get("username"))
 
         # Ensure username exists and password is correct
         if not rows:
             return apology("invalid username and/or password", 403)
 
-        if not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        if not check_password_hash(rows[0]["Password"], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
-        session["user_id"] = rows[0]["id"]
+        session["user_id"] = rows[0]["User_ID"]
 
         # Redirect user to home page
         return redirect("/")
@@ -78,7 +78,7 @@ def login():
 
 
 @app.route("/sqlist")
-def index():
+def sqlist():
     """Show list of questions"""
     questions = db.execute("SELECT * FROM Question WHERE User_ID = :userid", userid=session["user_id"])
 
@@ -122,7 +122,7 @@ def register():
         hash = generate_password_hash(request.form.get("password"))
 
         # Insert user into database for username
-        rows = db.execute("INSERT INTO users (UserName, Password, Role) VALUES(:username, :hash, :role)",
+        rows = db.execute("INSERT INTO User (UserName, Password, Role) VALUES(:username, :hash, :role)",
                           username=request.form.get("username"), hash=hash, role="Student")
 
         if not rows:
@@ -170,7 +170,7 @@ def register_teacher():
         hash = generate_password_hash(request.form.get("password"))
 
         # Insert user into database for username
-        rows = db.execute("INSERT INTO users (UserName, Password, Role) VALUES(:username, :hash, :role)",
+        rows = db.execute("INSERT INTO User (UserName, Password, Role) VALUES(:username, :hash, :role)",
                           username=request.form.get("username"), hash=hash, role="Teacher")
 
         if not rows:
