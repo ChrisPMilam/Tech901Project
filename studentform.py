@@ -1,3 +1,4 @@
+"""
 @app.route("/question", methods=["GET", "POST"])
 @login_required
 def question():
@@ -14,4 +15,4 @@ def question():
                     title = request.form.get("title"), description = request.form.get("description"), code = request.form.get("code"), id=session["user_id"])
         # Return to main forum
     return redirect(url_for("index"))
- 
+ """
