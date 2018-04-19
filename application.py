@@ -82,7 +82,7 @@ def sqlist():
     """Show list of questions"""
     questions = db.execute("SELECT * FROM Question WHERE User_ID = :userid", userid=session["user_id"])
 
-    return render_template("sQuestions.html", questions=questions)
+    return render_template("qList.html", questions=questions)
 
 
 @app.route("/logout")
