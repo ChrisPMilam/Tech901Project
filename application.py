@@ -85,6 +85,17 @@ def sqlist():
     return render_template("sqlist.html", questions=questions)
 
 
+@app.route("/tqlist")
+def tqlist():
+    """Show list of questions"""
+    questions = db.execute("""SELECT Question.Title, User.UserName
+                                FROM Question
+                                INNER JOIN User
+                                ON Question.User_ID=User.User_ID""")
+
+    return render_template("tqlist.html", questions=questions)
+
+
 @app.route("/logout")
 def logout():
     """Log user out"""
@@ -203,7 +214,7 @@ def question():
             return error ("Please provide a question title.")
 
         # Post form question to database
-        db.execute("INSERT INTO project (title, description, code, id) VALUES(:title, :description, :code, :id)",
+        db.execute("INSERT INTO Question (Title, Description, Code, User_ID) VALUES(:title, :description, :code, :id)",
                     title = request.form.get("title"), description = request.form.get("description"), code = request.form.get("code"), id=session["user_id"])
         # Return to main forum
     return redirect(url_for("index"))
