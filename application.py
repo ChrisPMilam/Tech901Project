@@ -88,7 +88,7 @@ def sqlist():
 @app.route("/tqlist")
 def tqlist():
     """Show list of questions"""
-    questions = db.execute("""SELECT Question.Description, User.UserName
+    questions = db.execute("""SELECT Question.Title, User.UserName
                                 FROM Question
                                 INNER JOIN User
                                 ON Question.User_ID=User.User_ID""")
