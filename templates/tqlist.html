@@ -21,9 +21,8 @@
         <tbody>
         {% for question in questions %}
         <tr>
-            <td>{{ question["User_ID"] }}</td>
-            <td id="first"><a href="url">{{ question["Title"] }}</a></td>
-            <td id="second">{{ question["Answered"] }}</td>
+            <td>{{ question["UserName"] }}</td>
+            <td>{{ question["Description"] }}</td>
         </tr>
         {% endfor %}
         </tbody>
