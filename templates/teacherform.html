@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Teacher Reply
+{% endblock %}
+
+{% block main %}
+        <form action="/reply" id="reply" method="post">
+            <input name="AnswerText" placeholder="Enter reply" type="text"/>
+            <input name="QuestionId" value="{{ qid }}" type="hidden"/>
+            <input type="submit" value="submit"/>
+        </form>
+        <script>
+
+            let form = document.getElementById("post");
+            form.onsubmit = function() {
+
+                if (!form.AnswerText.value)
+                {
+                    alert("missing reply");
+                    return false;
+                }
+                return true;
+            };
+        </script>
+{% endblock %}

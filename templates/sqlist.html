@@ -1,13 +1,10 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html>
-    <head>
-        <!-- Apps CSS -->
-        <link href="static/styles.css" rel="stylesheet"/>
+{% block title %}
+    Teacher Registration
+{% endblock %}
 
-        <title>Questions</title>
-    </head>
-    <body>
+{% block main %}
         <h2>Questions</h2>
 
     <table>
@@ -26,5 +23,4 @@
         {% endfor %}
         </tbody>
     </table>
-    </body>
-</html>
+{% endblock %}

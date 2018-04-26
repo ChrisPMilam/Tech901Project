@@ -1,9 +1,11 @@
-<html>
-    <head>
-        <title>postquestion</title>
-    </head>
-    <body>
-        <form action="/submitting" id="submitting" method="get">
+{% extends "layout.html" %}
+
+{% block title %}
+    Teacher Registration
+{% endblock %}
+
+{% block main %}
+        <form action="/question" id="submitting" method="post">
             <input name="title" placeholder="What's your question?" type="text"/>
             <input name="description" placeholder="Description" type="text"/>
 		    <input name="code" placeholder="Insert any code"type="text"/>
@@ -27,5 +29,4 @@
                 return true;
             };
         </script>
-   </body>
-</html>
+{% endblock %}
