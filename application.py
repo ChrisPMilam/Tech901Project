@@ -95,6 +95,18 @@ def tqlist():
 
     return render_template("tqlist.html", questions=questions)
 
+@app.route("/reply", methods=["GET", "POST"])
+def reply():
+    """Allow teacher to post reply to question"""
+    if request.method == "GET":
+        qid = request.args.get("qid")
+        return render_template("teacherform.html", qid=qid)
+    else:
+        # Insert answer
+        rows = db.execute("INSERT INTO Question (AnswerText) VALUES(:answertext) WHERE QuestionId = :qid",
+                          answertext=request.form.get("AnswerText"), qid=request.form.get("QuestionID"))
+
+
 
 @app.route("/logout")
 def logout():
@@ -205,7 +217,7 @@ def register_teacher():
 
 @app.route("/question", methods=["GET", "POST"])
 def question():
-
+    """ Allows student to submit question """
     # Get question
     if request.method == "GET":
         return render_template("studentform.html")
